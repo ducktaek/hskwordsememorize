@@ -230,8 +230,8 @@ function render(){
       </div>
       <div class="btns">
         <button class="check" data-act="show">답안확인<kbd>Space</kbd></button>
-        <button class="yes" data-act="mark-k">안다<kbd>1</kbd></button>
-        <button class="no" data-act="mark-u">모른다<kbd>2</kbd></button>
+        <button class="yes" data-act="mark-k">안다<kbd>←</kbd></button>
+        <button class="no" data-act="mark-u">모른다<kbd>→</kbd></button>
       </div>`;
     }
   }
@@ -267,8 +267,8 @@ document.addEventListener('click',e=>{
 document.addEventListener('keydown',e=>{
   if(view.name!=='card'||e.metaKey||e.ctrlKey||e.altKey)return;
   if(e.key===' '||e.key==='Enter'){if(document.activeElement?.tagName==='BUTTON'&&e.key==='Enter')return;e.preventDefault();act('show')}
-  else if(e.key==='1')act('mark-k');
-  else if(e.key==='2')act('mark-u');
+  else if(e.key==='ArrowLeft'){e.preventDefault();act('mark-k')}
+  else if(e.key==='ArrowRight'){e.preventDefault();act('mark-u')}
 });
 render();
 </script>
